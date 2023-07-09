@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+button {
+  display: inline-block;
+  padding: 4px;
+  margin: 5px;
+}
+
+.ingredient-div div {
+  display: inline-block;
+}

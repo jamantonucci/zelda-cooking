@@ -20,28 +20,38 @@ const cook = (recipe) => {
 	let hearts = getHearts(recipe);
 	let resultEffect = getBuff(recipe);
 
+	let recipeOutput = {
+		hearts: hearts,
+		buff: resultEffect,
+		buffStrength: null,
+		buffDuration: null,
+		buffHearts: '',
+		buffStamina: '',
+	}
+
 	switch (resultEffect.effectType) {
 		case 'duration':
 			let buffStrength = getBuffStrength(recipe, resultEffect);
 			let buffDuration = getBuffDuration(recipe, resultEffect);
-			console.log(hearts + ' ' + resultEffect.effect + ' ' + buffStrength + ' ' + getFriendlyDuration(buffDuration));
-			break;
+			recipeOutput.buffStrength = buffStrength;
+			recipeOutput.buffDuration = getFriendlyDuration(buffDuration);
+			return recipeOutput;
 
 		case 'hearts':
 			let buffHearts = getBuffHearts(recipe);
 			if (resultEffect.effect === 'ExtraHearts') {
-				hearts = 'Full Recovery';
+				recipeOutput.hearts = 'Full Recovery';
 			}
-			console.log(hearts + ' ' + resultEffect.effect + ' ' + buffHearts);
-			break;
+			recipeOutput.buffHearts = buffHearts;
+			return recipeOutput;
+			
 		case 'stamina':
 			let buffStamina = getBuffStamina(recipe, resultEffect);
-			console.log(hearts + ' ' + resultEffect.effect + ' ' + buffStamina);
-			break;
+			recipeOutput.buffStamina = buffStamina;
+			return recipeOutput;
 
 		default:
-			console.log('Hearts: ' + hearts);
-			break;
+			return recipeOutput;
 	}
 };
 
@@ -207,4 +217,4 @@ const getFriendlyDuration = (duration) => {
 	return friendlyDuration;
 };
 
-export { createRecipe };
+export { createRecipe, cook };

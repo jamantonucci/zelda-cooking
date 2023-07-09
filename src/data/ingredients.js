@@ -35,7 +35,7 @@ ingredients.push(new Ingredient(20, 'Hearty Truffle', 2, 'ExtraHearts', 4, 0, 0,
 ingredients.push(new Ingredient(21, 'Endura Shroom', 1, 'ExtraStamina', 1, 30, 0, 'CookMushroom', 'Mushroom'));
 ingredients.push(new Ingredient(22, 'Rushroom', 0.5, 'SpeedUp', 1, 30, 0, 'CookMushroom', 'Mushroom'));
 ingredients.push(new Ingredient(23, 'Brightcap', 0.5, 'Glow', 1, 30, 0, 'CookMushroom', 'Mushroom'));
-ingredients.push(new Ingredient(24, 'Stamella Shroom', 0.5, 'Stamina Recovery', 1, 30, 0, 'CookMushroom', 'Mushroom'));
+ingredients.push(new Ingredient(24, 'Stamella Shroom', 0.5, 'StaminaRecovery', 1, 30, 0, 'CookMushroom', 'Mushroom'));
 ingredients.push(new Ingredient(25, 'Chillshroom', 0.5, 'HeatResist', 2, 30, 0, 'CookMushroom', 'Mushroom'));
 ingredients.push(new Ingredient(26, 'Sunshroom', 0.5, 'ColdResist', 2, 30, 0, 'CookMushroom', 'Mushroom'));
 ingredients.push(new Ingredient(27, 'Hylian Shroom', 0.5, null, 0, 0, 0, 'CookMushroom', 'Mushroom'));
