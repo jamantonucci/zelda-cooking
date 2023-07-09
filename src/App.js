@@ -17,9 +17,11 @@ function App() {
 	return (
 		<div className='App'>
 			<Header />
-			<RecipeInput recipe={recipe} setRecipe={setRecipe} />
-			<RecipeOutput recipe={recipe} />
-			<IngredientList recipe={recipe} setRecipe={() => handleAddIngredient()} />
+			<main>
+				<RecipeInput recipe={recipe} setRecipe={setRecipe} />
+				<RecipeOutput recipe={recipe} />
+				<IngredientList recipe={recipe} setRecipe={() => handleAddIngredient()} />
+			</main>
 		</div>
 	);
 }

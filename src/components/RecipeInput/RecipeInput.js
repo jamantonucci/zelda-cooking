@@ -1,4 +1,5 @@
 import './RecipeInput.sass';
+import { CgRemove } from 'react-icons/cg';
 
 export default function RecipeInput({ recipe, setRecipe }) {
 	const handleClearIngredients = () => {
@@ -11,19 +12,34 @@ export default function RecipeInput({ recipe, setRecipe }) {
 		setRecipe(newRecipe);
 	};
 
+	const rows = [];
+	for (let i = 0; i <= 4; i++) {
+		if (i < recipe.length) {
+			rows.push(
+				<li key={i}>
+					{recipe[i].type} <CgRemove onClick={() => handleRemoveIngredient(i)} />
+				</li>
+			);
+		} else {
+			rows.push(
+				<li key={i} className='empty-li'>
+					<span>None</span>
+				</li>
+			);
+		}
+	}
+
 	return (
 		<div className='input-div'>
 			<div className='card-header'>
-				<h2>Recipe Input</h2>
+				<h2>Recipe</h2>
 			</div>
 
-			{recipe.map((ingredient, index) => (
-				<div key={index}>
-					{ingredient.type}
-					<button onClick={() => handleRemoveIngredient(index)}>x</button>
-				</div>
-			))}
-			<button onClick={handleClearIngredients}>Clear</button>
+			<ol>{rows}</ol>
+
+			<div className='clear-button'>
+				<button onClick={handleClearIngredients}>Clear</button>
+			</div>
 		</div>
 	);
 }

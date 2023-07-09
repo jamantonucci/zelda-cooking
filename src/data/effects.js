@@ -5,6 +5,7 @@ const effects = [
   },
   {
     effect: 'AttackUp',
+    displayName: 'Attack Up',
     effectType: 'duration',
     midThreshold: 5,
     highThreshold: 7,
@@ -12,6 +13,7 @@ const effects = [
   },
   {
     effect: 'ColdResist',
+    displayName: 'Cold Resistance',
     effectType: 'duration', 
     midThreshold: 6,
     highThreshold: 99,
@@ -19,6 +21,7 @@ const effects = [
   },
   {
     effect: 'DefenseUp',
+    displayName: 'Defense Up',
     effectType: 'duration',
     midThreshold: 5,
     highThreshold: 7,
@@ -26,6 +29,7 @@ const effects = [
   },
   {
     effect: 'Fireproof',
+    displayName: 'Fireproof',
     effectType: 'duration',
     midThreshold: 7,
     highThreshold: 99,
@@ -33,6 +37,7 @@ const effects = [
   },
   {
     effect: 'HeatResist',
+    displayName: 'Heat Resistance',
     effectType: 'duration',
     midThreshold: 6,
     highThreshold: 99,
@@ -40,6 +45,7 @@ const effects = [
   },
   {
     effect: 'ShockResist',
+    displayName: 'Shock Resistance',
     effectType: 'duration',
     midThreshold: 4,
     highThreshold: 6,
@@ -47,6 +53,7 @@ const effects = [
   },
   {
     effect: 'SpeedUp',
+    displayName: 'Speed Up',
     effectType: 'duration',
     midThreshold: 5,
     highThreshold: 7,
@@ -54,6 +61,7 @@ const effects = [
   },
   {
     effect: 'StealthUp',
+    displayName: 'Stealth Up',
     effectType: 'duration',
     midThreshold: 6,
     highThreshold: 9,
@@ -61,22 +69,27 @@ const effects = [
   },
   {
     effect: 'ExtraHearts',
+    displayName: 'Extra Hearts',
     effectType: 'hearts'
   },
   {
     effect: 'GloomRecovery',
+    displayName: 'Gloom Recovery',
     effectType: 'hearts'
   },
   {
     effect: 'StaminaRecovery',
+    displayName: 'Stamina Recovery',
     effectType: 'stamina'
   },
   {
     effect: 'ExtraStamina',
+    displayName: 'Extra Stamina',
     effectType: 'stamina'
   },
   {
     effect: 'HotWeatherAttack',
+    displayName: 'Hot Weather Attack Up',
     effectType: 'duration',
     midThreshold: 99,
     highThreshold: 99,
@@ -84,6 +97,7 @@ const effects = [
   },
   {
     effect: 'ColdWeatherAttack',
+    displayName: 'Cold Weather Attack Up',
     effectType: 'duration',
     midThreshold: 99,
     highThreshold: 99,
@@ -91,6 +105,7 @@ const effects = [
   },
   {
     effect: 'StormyWeatherAttack',
+    displayName: 'Stormy Weather Attack Up',
     effectType: 'duration',
     midThreshold: 99,
     highThreshold: 99,
@@ -98,6 +113,7 @@ const effects = [
   },
   {
     effect: 'SwimSpeedUp',
+    displayName: 'Swim Speed Up',
     effectType: 'duration',
     midThreshold: 99,
     highThreshold: 99,
@@ -105,6 +121,7 @@ const effects = [
   },
   {
     effect: 'Glow',
+    displayName: 'Glow',
     effectType: 'duration',
     midThreshold: 5,
     highThreshold: 7,
@@ -112,6 +129,7 @@ const effects = [
   },
   {
     effect: 'GloomResist',
+    displayName: 'Gloom Resistance',
     effectType: 'duration',
     midThreshold: 2,
     highThreshold: 3,

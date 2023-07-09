@@ -2,4 +2,36 @@
 
 .input-div
   @include card-default
+  flex-grow: 2
+  width: 60%
+  text-align: left
+
+  ol
+    color: $text-color
+    list-style-position: inside
+    margin: 0
+
+    li
+      padding: 0.3rem
+
+    .empty-li
+      text-decoration: italic
+      opacity: 0.5
+
+    svg
+      color: $warning-color
+      font-size: 1rem
+
+  .clear-button
+    width: 100%
+    text-align: center
   
+  button
+    width: 100%
+    text-align: center
+    border: none
+    background-color: $background-color-light
+    color: $text-color
+    font-size: 16px
+    padding: -1
+    margin: 0

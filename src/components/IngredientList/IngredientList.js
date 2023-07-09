@@ -13,7 +13,7 @@ export default function IngredientList(props) {
 	return (
 		<div className='ingredient-list-div'>
 			<div className='card-header'>
-				<h2>Ingredient List</h2>
+				<h2>Materials</h2>
 			</div>
 
 			<div className='ingredient-div'>

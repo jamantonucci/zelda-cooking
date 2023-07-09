@@ -2,3 +2,22 @@
 
 .ingredient-list-div
   @include card-default
+  flex-grow: 3
+
+.ingredient-div
+  display: flex
+  justify-content: space-evenly
+  align-content: flex-start
+  flex-wrap: wrap
+
+  div
+    button
+      border: none
+      background-color: $background-color-light
+      color: $text-color
+      font-size: 14px
+      border-radius: 3px
+      padding: 5px
+      margin: 5px
+
+
