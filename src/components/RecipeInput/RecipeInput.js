@@ -16,15 +16,17 @@ export default function RecipeInput({ recipe, setRecipe }) {
 	for (let i = 0; i <= 4; i++) {
 		if (i < recipe.length) {
 			rows.push(
-				<li key={i}>
-					{recipe[i].type} <CgRemove onClick={() => handleRemoveIngredient(i)} />
-				</li>
+				<div key={i} className='row'>
+					
+					<span className='ingredient-name'><img className='material-img' src={recipe[i].image} />{recipe[i].type}</span>
+					<CgRemove onClick={() => handleRemoveIngredient(i)} />
+				</div>
 			);
 		} else {
 			rows.push(
-				<li key={i} className='empty-li'>
+				<div key={i} className='empty-row row'>
 					<span>None</span>
-				</li>
+				</div>
 			);
 		}
 	}
@@ -35,7 +37,7 @@ export default function RecipeInput({ recipe, setRecipe }) {
 				<h2>Recipe</h2>
 			</div>
 
-			<ol>{rows}</ol>
+			<div className='rows'>{rows}</div>
 
 			<div className='clear-button'>
 				<button onClick={handleClearIngredients}>Clear</button>

@@ -101,11 +101,11 @@ const getBuffStrength = (recipe, buff) => {
 	let highThreshold = buff.highThreshold;
 
 	if (resultPotency >= highThreshold) {
-		effectStrength = 'High';
+		effectStrength = 3;
 	} else if (resultPotency >= midThreshold) {
-		effectStrength = 'Mid';
+		effectStrength = 2;
 	} else {
-		effectStrength = 'Low';
+		effectStrength = 1;
 	}
 
 	return effectStrength;
@@ -193,11 +193,11 @@ const getBuffStamina = (recipe, buff) => {
 				buffStamina = 3;
 		}
 	} else if (buff.effect === 'ExtraStamina') {
-		switch (resultPotency) {
+		switch (true) {
 			case 0:
 				buffStamina = 0;
 				break;
-			case resultPotency <= 3:
+			case (resultPotency <= 3):
 				buffStamina = 0.2;
 				break;
 			default:

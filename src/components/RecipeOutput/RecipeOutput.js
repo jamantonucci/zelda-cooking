@@ -1,7 +1,8 @@
 import './RecipeOutput.sass';
 import { cook } from '../../calc';
 import { TiHeartHalfOutline, TiHeartFullOutline } from 'react-icons/ti';
-import { CgChevronDoubleUp } from 'react-icons/cg';
+import heartIcon from '../../data/assets/ui-icons/Heart.svg';
+import halfHeartIcon from '../../data/assets/ui-icons/Heart Half.svg';
 import { FiClock } from 'react-icons/fi';
 
 export default function RecipeOutput({ recipe }) {
@@ -10,19 +11,34 @@ export default function RecipeOutput({ recipe }) {
 	let effectOutput = '';
 	let hearts = [];
 	let buffHearts = [];
+	let buffIcons = [];
+	let wheelIcons = [];
 
 	if (buff.effect === 'ExtraHearts') {
 		hearts.push(
 			<span>
-				<TiHeartFullOutline />
+				<img src={heartIcon} className='ui-icon' />
 				Full Recovery
 			</span>
 		);
-		buffHearts = convertHeartsToIcons(recipeOutput.buffHearts);
 	} else hearts = convertHeartsToIcons(recipeOutput.hearts);
+
+	if (recipeOutput.buffStrength >= 1) {
+		buffIcons = convertBuffStrengthToIcons(recipeOutput.buffStrength);
+	}
+
+	if (buff.effect === 'StaminaRecovery' || buff.effect === 'ExtraStamina') {
+		buffIcons = convertStaminaToWheels(recipeOutput.buffStamina);
+	}
+
+	if (buff.effect === 'ExtraHearts' || buff.effect === 'GloomRecovery') {
+		buffIcons = convertBuffHeartsToIcons(recipeOutput.buffHearts);
+	}
 
 	if (recipeOutput.buff.effect === null) {
 		effectOutput = '';
+	} else if (buff.effect === 'GloomRecovery') {
+		effectOutput = recipeOutput.buffHearts + ' hearts of ' + buff.displayName;
 	} else if (recipeOutput.buffHearts !== '') {
 		effectOutput = recipeOutput.buffHearts + ' ' + recipeOutput.buff.displayName;
 	} else if (recipeOutput.buffStamina !== '') {
@@ -32,16 +48,53 @@ export default function RecipeOutput({ recipe }) {
 	function convertHeartsToIcons(hearts) {
 		const heartIcons = [];
 
-		if (recipeOutput.buffHearts !== '') {
-			heartIcons.push();
-		} else {
+		{
 			for (let i = 1; i <= hearts; i++) {
-				heartIcons.push(<TiHeartFullOutline />);
+				heartIcons.push(<img src={heartIcon} className='ui-icon' />);
 			}
 
 			if (hearts % 1 !== 0) {
-				heartIcons.push(<TiHeartHalfOutline />);
+				heartIcons.push(<img src={halfHeartIcon} className='ui-icon' />);
 			}
+		}
+
+		return heartIcons;
+	}
+
+	function convertBuffStrengthToIcons(strength) {
+		const buffIcons = [];
+
+		{
+			for (let i = 1; i <= strength; i++) {
+				buffIcons.push(<img className='ui-icon' src={buff.icon} />);
+			}
+		}
+
+		return buffIcons;
+	}
+
+	function convertStaminaToWheels(wheels) {
+		const wheelIcons = [];
+
+		for (let i = 1; i <= wheels; i++) {
+			wheelIcons.push(<img src={buff.icon} className='ui-icon' />);
+		}
+
+		wheels = (wheels % 1).toFixed(1);
+
+		if (wheels > 0) {
+			wheels = wheels / 0.2 - 1;
+			wheelIcons.push(<img src={buff.icons[wheels]} className='ui-icon' />);
+		}
+
+		return wheelIcons;
+	}
+
+	function convertBuffHeartsToIcons(hearts) {
+		const heartIcons = [];
+
+		for (let i = 1; i <= hearts; i++) {
+			heartIcons.push(<img src={buff.icon} className='ui-icon' />);
 		}
 
 		return heartIcons;
@@ -58,8 +111,7 @@ export default function RecipeOutput({ recipe }) {
 				{buff.effectType === 'duration' && (
 					<>
 						<div className='effect-type-div'>
-							<CgChevronDoubleUp />
-							{buff.displayName}
+							{buffIcons} {wheelIcons} {buff.displayName}
 						</div>
 						<div className='effect-duration-div'>
 							<FiClock />
@@ -67,7 +119,7 @@ export default function RecipeOutput({ recipe }) {
 						</div>
 					</>
 				)}
-				{(recipeOutput.buffHearts !== '' || recipeOutput.buffStamina !== '') && <div>{effectOutput}</div>}
+				{buff.effectType !== 'duration' && <div>{buffIcons}{' '}{buff.displayName}</div>}
 			</div>
 		</div>
 	);

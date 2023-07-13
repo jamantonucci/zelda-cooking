@@ -1,4 +1,5 @@
 import { ingredients } from '../../data/ingredients';
+import { effects } from '../../data/effects';
 import './IngredientList.sass';
 
 export default function IngredientList(props) {
@@ -7,6 +8,17 @@ export default function IngredientList(props) {
 			const newRecipe = props.recipe;
 			newRecipe.push(ingredient);
 			props.setRecipe(newRecipe);
+		}
+	};
+
+	const getEffectIcon = (ingredient) => {
+		let effect = effects.find((effect) => effect.effect === ingredient.effect);
+		let icon = effect.icon;
+
+		if (icon) {
+			return <img src={icon} className='effect-icon' />;
+		} else {
+			return '';
 		}
 	};
 
@@ -19,7 +31,10 @@ export default function IngredientList(props) {
 			<div className='ingredient-div'>
 				{ingredients.map((ingredient, index) => (
 					<div key={index}>
-						<button onClick={() => handleAddIngredient(ingredient)}>{ingredient.type}</button>
+						<button className='material-button' onClick={() => handleAddIngredient(ingredient)}>
+							<img className='material-img' src={ingredient.image} />
+							{ingredient.effect !== undefined && ingredient.effect !== null && getEffectIcon(ingredient)}
+						</button>
 					</div>
 				))}
 			</div>

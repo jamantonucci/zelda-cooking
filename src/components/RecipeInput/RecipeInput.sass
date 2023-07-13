@@ -6,21 +6,44 @@
   width: 60%
   text-align: left
 
-  ol
+  .rows
     color: $text-color
-    list-style-position: inside
+    list-style-type: none
     margin: 0
 
-    li
-      padding: 0.3rem
+    .row
+      box-sizing: border-box
+      width: 100%
+      transition-duration: 300ms
+      display: flex
+      justify-content: space-between
+      align-items: center
+      height: 50px
 
-    .empty-li
+      .ingredient-name
+        display: flex
+        align-items: center
+
+        img
+          width: 32px
+
+      &:hover
+        background-color: $background-color-light
+
+    .empty-row
       text-decoration: italic
       opacity: 0.5
+      padding-left: 1rem
 
     svg
       color: $warning-color
-      font-size: 1rem
+      font-size: 1.7rem
+      margin-right: 10px
+      opacity: 0.3
+
+      &:hover
+        color: $warning-color
+        opacity: 1
 
   .clear-button
     width: 100%
