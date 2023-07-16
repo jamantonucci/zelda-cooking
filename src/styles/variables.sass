@@ -12,7 +12,15 @@ $body-font: 'Open-Sans'
   border: 1px solid $background-color-light
   border-radius: 3px
 
-  h2
-    width: 100%
-    background-color: background-color-light
-    text-align: left
+@mixin breakpoint($min-width)
+  @media only screen and (min-width: $min-width)
+    @content
+
+@mixin breakpoint-small
+  @include breakpoint(768px)
+    @content
+
+@mixin breakpoint-large
+  @include breakpoint(1280px)
+    @content
+
