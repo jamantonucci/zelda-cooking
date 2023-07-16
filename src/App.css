@@ -46,3 +46,8 @@ button {
 .ingredient-div div {
   display: inline-block;
 }
+
+@font-face {
+  font-family: 'Hylia-Sans';
+  src: local('HyliaSans'), url('./fonts/hyliaserifbeta-regular-webfont.woff2') format('woff2')
+}

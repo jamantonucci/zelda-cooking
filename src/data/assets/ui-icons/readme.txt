@@ -1,0 +1,1 @@
+Vectors from risograph#0 (in game icons)
