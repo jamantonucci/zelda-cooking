@@ -1,21 +1,11 @@
 import { effects } from './data/effects';
-import { ingredients } from './data/ingredients';
 
-const createRecipe = (ing) => {
-	let recipe = [];
-	ing = ing.slice(0, 5);
-
-	for (let i = 0; i < ing.length; i++) {
-		let ingredientToAdd = ingredients.find((ingredient) => {
-			return ingredient.type === ing[i];
-		});
-		console.log(ing.join(', '));
-		recipe.push(ingredientToAdd);
-	}
-
-	cook(recipe);
-};
-
+/**
+ * Takes a recipe and outputs an object with the hearts and
+ * 	buff information for that recipe.
+ * @param {array} recipe An array of ingredients
+ * @returns {object} 	Contains information about the recipe
+ */
 const cook = (recipe) => {
 	let hearts = getHearts(recipe);
 	let resultEffect = getBuff(recipe);
@@ -27,6 +17,7 @@ const cook = (recipe) => {
 		buffDuration: null,
 		buffHearts: '',
 		buffStamina: '',
+		errors: [],
 	};
 
 	switch (resultEffect.effectType) {
@@ -50,11 +41,20 @@ const cook = (recipe) => {
 			recipeOutput.buffStamina = buffStamina;
 			return recipeOutput;
 
+		case 'error':
+			recipeOutput.errors.push(resultEffect.errorText);
+			return recipeOutput;
+
 		default:
 			return recipeOutput;
 	}
 };
 
+/**
+ * Calculates the number of hearts a recipe will restore.
+ * @param {array} recipe An array of ingredients
+ * @returns {Number} The number of hearts restored.
+ */
 const getHearts = (recipe) => {
 	let resultHearts = 0;
 
@@ -68,6 +68,11 @@ const getHearts = (recipe) => {
 	return resultHearts;
 };
 
+/**
+ * Determines the buff caused by the recipe, if any
+ * @param {array} recipe  An array of ingredients
+ * @returns The effect of the recipe if there is one; else null
+ */
 const getBuff = (recipe) => {
 	let ingredientEffects = new Set();
 	let resultEffect = null;
@@ -78,8 +83,10 @@ const getBuff = (recipe) => {
 		}
 	});
 
-	if (ingredientEffects.size !== 1) {
+	if (ingredientEffects.size === 0) {
 		resultEffect = null;
+	} else if (ingredientEffects.size > 1) {
+		resultEffect = 'error';
 	} else {
 		resultEffect = [...ingredientEffects][0];
 	}
@@ -89,6 +96,12 @@ const getBuff = (recipe) => {
 	return effect || null;
 };
 
+/**
+ * Takes a recipe and a buff and determines the strength of the effect.
+ * @param {array} recipe An array of ingredients
+ * @param {object} buff An object matching the buff
+ * @returns {Number} The strength of the buff.
+ */
 const getBuffStrength = (recipe, buff) => {
 	let resultPotency = 0;
 	let effectStrength = '';
@@ -111,6 +124,12 @@ const getBuffStrength = (recipe, buff) => {
 	return effectStrength;
 };
 
+/**
+ * Calculates the duration of an effect (in seconds)
+ * @param {array} recipe An array of ingredients
+ * @param {object} buff An object matching the buff
+ * @returns {Number} The duration of the effect, in seconds.
+ */
 const getBuffDuration = (recipe, buff) => {
 	let boostIngredients = new Set();
 	let resultDuration = 0;
@@ -142,6 +161,12 @@ const getBuffDuration = (recipe, buff) => {
 	return resultDuration;
 };
 
+/**
+ * Accepts a recipe and returns the number of "buff hearts", where "buff
+ * hearts" can be extra hearts or gloom recovery.
+ * @param {array} recipe An array of ingredients
+ * @returns {Number} The number of hearts for the buff
+ */
 const getBuffHearts = (recipe) => {
 	let resultPotency = 0;
 
@@ -154,6 +179,12 @@ const getBuffHearts = (recipe) => {
 	return buffHearts;
 };
 
+/**
+ * Accepts a recipe and an object and returns the amount of stamina healed
+ * @param {array} recipe An array of ingredients
+ * @param {Object} buff The type of buff - should be either ExtraStamina or StaminaRecovery
+ * @returns {Number} The number of stamina wheels restored
+ */
 const getBuffStamina = (recipe, buff) => {
 	let resultPotency = 0;
 	let buffStamina = 0;
@@ -218,6 +249,11 @@ const getBuffStamina = (recipe, buff) => {
 	return buffStamina;
 };
 
+/**
+ * Accepts a number in seconds and outputs it in mm:ss format.
+ * @param {Number} duration The duration of a buff, in seconds
+ * @returns {String} The duration formatted in m:ss (eg. 2:40)
+ */
 const getFriendlyDuration = (duration) => {
 	let minutes = Math.floor(duration / 60);
 	let seconds = ('0' + (duration % 60)).slice(-2);
@@ -225,4 +261,4 @@ const getFriendlyDuration = (duration) => {
 	return friendlyDuration;
 };
 
-export { createRecipe, cook };
+export { cook };

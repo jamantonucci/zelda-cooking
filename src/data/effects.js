@@ -34,6 +34,11 @@ const effects = [
     effectType: null
   },
   {
+    effect: 'error',
+    effectType: 'error',
+    errorText: 'Ingredients with different effects are cancelling each other out.'
+  },
+  {
     effect: 'AttackUp',
     displayName: 'Attack Up',
     effectType: 'duration',

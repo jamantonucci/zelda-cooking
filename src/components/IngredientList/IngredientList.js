@@ -19,7 +19,7 @@ export default function IngredientList(props) {
 		let icon = effect.icon;
 
 		if (icon) {
-			return <img src={icon} className='effect-icon' />;
+			return <img src={icon} className='effect-icon' alt={effect.displayName} />;
 		} else {
 			return '';
 		}
@@ -36,7 +36,7 @@ export default function IngredientList(props) {
 		if (ingredient.hearts > 0) {
 			rows.push(
 				<span>
-					<img src={heartIcon} className='ui-icon' /> {ingredient.hearts * 2}
+					<img src={heartIcon} className='ui-icon' alt='heart icon' /> {ingredient.hearts * 2}
 					<span className='tooltip-note-text'>(when cooked)</span>
 				</span>
 			);
@@ -74,9 +74,8 @@ export default function IngredientList(props) {
 						Changes duration to 1:00, 10:00 or 30:00
 					</span>
 				);
-			} else if (ingredient.id >= 181 && ingredient.id <= 184) 
+			} else if (ingredient.id >= 181 && ingredient.id <= 184) {
 				// Ingredients 181-184 are dragon horns, which always change the duration to 30 minutes.
-			{
 				rows.push(
 					<span>
 						<img src={starIcon} className='ui-icon' alt='' />
@@ -105,12 +104,14 @@ export default function IngredientList(props) {
 			<div className='ingredient-div'>
 				{ingredients.map((ingredient, index) => (
 					<div key={index}>
-						<a data-tooltip-id={ingredient.type}>
+						{/* // eslint-disable-next-line */}
+						<span data-tooltip-id={ingredient.type}>
 							<button className='material-button' onClick={() => handleAddIngredient(ingredient)}>
-								<img className='material-img' src={ingredient.image} />
+								<img className='material-img' src={ingredient.image} alt={ingredient.type} />
 								{ingredient.effect !== undefined && ingredient.effect !== null && getEffectIcon(ingredient)}
 							</button>
-						</a>
+						</span>
+						{/* // eslint-disable-next-line */}
 						<Tooltip className='my-tooltip' id={ingredient.type}>
 							<div className='my-tooltip' style={{ display: 'flex', flexDirection: 'column' }}>
 								{makeTooltip(ingredient)}

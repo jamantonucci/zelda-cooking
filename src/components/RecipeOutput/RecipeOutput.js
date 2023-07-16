@@ -1,23 +1,20 @@
 import './RecipeOutput.sass';
 import { cook } from '../../calc';
-import { TiHeartHalfOutline, TiHeartFullOutline } from 'react-icons/ti';
 import heartIcon from '../../data/assets/ui-icons/Heart.svg';
 import halfHeartIcon from '../../data/assets/ui-icons/Heart Half.svg';
-import { FiClock } from 'react-icons/fi';
+import { FiClock, FiAlertTriangle } from 'react-icons/fi';
 
 export default function RecipeOutput({ recipe }) {
 	let recipeOutput = cook(recipe);
 	let buff = recipeOutput.buff;
-	let effectOutput = '';
 	let hearts = [];
-	let buffHearts = [];
 	let buffIcons = [];
 	let wheelIcons = [];
 
 	if (buff.effect === 'ExtraHearts') {
 		hearts.push(
 			<span>
-				<img src={heartIcon} className='ui-icon' />
+				<img src={heartIcon} className='ui-icon' alt='heart icon' />
 				Full Recovery
 			</span>
 		);
@@ -38,14 +35,12 @@ export default function RecipeOutput({ recipe }) {
 	function convertHeartsToIcons(hearts) {
 		const heartIcons = [];
 
-		{
-			for (let i = 1; i <= hearts; i++) {
-				heartIcons.push(<img src={heartIcon} className='ui-icon' />);
-			}
+		for (let i = 1; i <= hearts; i++) {
+			heartIcons.push(<img src={heartIcon} className='ui-icon' alt='heart icon' />);
+		}
 
-			if (hearts % 1 !== 0) {
-				heartIcons.push(<img src={halfHeartIcon} className='ui-icon' />);
-			}
+		if (hearts % 1 !== 0) {
+			heartIcons.push(<img src={halfHeartIcon} className='ui-icon' alt='half heart icon' />);
 		}
 
 		return heartIcons;
@@ -54,10 +49,8 @@ export default function RecipeOutput({ recipe }) {
 	function convertBuffStrengthToIcons(strength) {
 		const buffIcons = [];
 
-		{
-			for (let i = 1; i <= strength; i++) {
-				buffIcons.push(<img className='ui-icon' src={buff.icon} />);
-			}
+		for (let i = 1; i <= strength; i++) {
+			buffIcons.push(<img className='ui-icon' src={buff.icon} alt={buff.displayName} />);
 		}
 
 		return buffIcons;
@@ -67,14 +60,14 @@ export default function RecipeOutput({ recipe }) {
 		const wheelIcons = [];
 
 		for (let i = 1; i <= wheels; i++) {
-			wheelIcons.push(<img src={buff.icon} className='ui-icon' />);
+			wheelIcons.push(<img src={buff.icon} className='ui-icon' alt={buff.displayName} />);
 		}
 
 		wheels = (wheels % 1).toFixed(1);
 
 		if (wheels > 0) {
 			wheels = (wheels / 0.2 - 1).toFixed(0);
-			wheelIcons.push(<img src={buff.icons[wheels]} className='ui-icon' />);
+			wheelIcons.push(<img src={buff.icons[wheels]} className='ui-icon' alt='stamina wheel icon' />);
 		}
 
 		return wheelIcons;
@@ -84,7 +77,7 @@ export default function RecipeOutput({ recipe }) {
 		const heartIcons = [];
 
 		for (let i = 1; i <= hearts; i++) {
-			heartIcons.push(<img src={buff.icon} className='ui-icon' />);
+			heartIcons.push(<img src={buff.icon} className='ui-icon' alt={buff.displayName} />);
 		}
 
 		return heartIcons;
@@ -109,7 +102,17 @@ export default function RecipeOutput({ recipe }) {
 						</div>
 					</>
 				)}
-				{buff.effectType !== 'duration' && <div>{buffIcons}{' '}{buff.displayName}</div>}
+				{buff.effectType !== 'duration' && (
+					<div>
+						{buffIcons} {buff.displayName}
+					</div>
+				)}
+				{recipeOutput.errors.length > 0 && (
+					<div className='errors-output'>
+						<FiAlertTriangle className='ui-icon' />
+						{recipeOutput.errors}
+					</div>
+				)}
 			</div>
 		</div>
 	);
