@@ -83,7 +83,7 @@ export default function RecipeOutput({ recipe }) {
 		wheels = (wheels % 1).toFixed(1);
 
 		if (wheels > 0) {
-			wheels = wheels / 0.2 - 1;
+			wheels = (wheels / 0.2 - 1).toFixed(0);
 			wheelIcons.push(<img src={buff.icons[wheels]} className='ui-icon' />);
 		}
 
