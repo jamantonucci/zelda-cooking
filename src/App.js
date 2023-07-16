@@ -3,6 +3,7 @@ import IngredientList from './components/IngredientList/IngredientList';
 import RecipeInput from './components/RecipeInput/RecipeInput';
 import RecipeOutput from './components/RecipeOutput/RecipeOutput';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import { useState } from 'react';
 import './styles/index.sass';
 
@@ -33,6 +34,7 @@ function App() {
 				</div>
 				<IngredientList recipe={recipe} setRecipe={() => handleAddIngredient()} />
 			</main>
+			<Footer />
 		</div>
 	);
 }
