@@ -1,5 +1,5 @@
 import './RecipeInput.sass';
-import { CgRemove } from 'react-icons/cg';
+import { CiSquareRemove } from 'react-icons/ci';
 
 export default function RecipeInput({ recipe, setRecipe }) {
 	const handleClearIngredients = () => {
@@ -17,9 +17,13 @@ export default function RecipeInput({ recipe, setRecipe }) {
 		if (i < recipe.length) {
 			rows.push(
 				<div key={i} className='row'>
-					
-					<span className='ingredient-name'><img className='material-img' src={recipe[i].image} />{recipe[i].type}</span>
-					<CgRemove onClick={() => handleRemoveIngredient(i)} />
+					<span className='ingredient-name'>
+						<img className='material-img' src={recipe[i].image} alt={recipe[i].type} />
+						{recipe[i].type}
+					</span>
+					<span className='remove-ingredient' onClick={() => handleRemoveIngredient(i)}>
+						<CiSquareRemove />
+					</span>
 				</div>
 			);
 		} else {
