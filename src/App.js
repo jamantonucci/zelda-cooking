@@ -6,7 +6,6 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { useState } from 'react';
 import './styles/index.sass';
-
 import './fonts/hyliaserifbeta-regular-webfont.woff2';
 
 function App() {

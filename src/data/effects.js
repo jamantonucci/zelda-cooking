@@ -185,6 +185,15 @@ const effects = [
     duration: 120,
     icon: gloomResist
   },
+  {
+    effect: 'SlipResist',
+    displayName: 'Slip Resistance',
+    effectType: 'duration',
+    midThreshold: 5,
+    highThreshold: 7,
+    duration: 90,
+    icon: slipResist,
+  }
 
 
 ];

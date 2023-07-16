@@ -35,16 +35,6 @@ export default function RecipeOutput({ recipe }) {
 		buffIcons = convertBuffHeartsToIcons(recipeOutput.buffHearts);
 	}
 
-	if (recipeOutput.buff.effect === null) {
-		effectOutput = '';
-	} else if (buff.effect === 'GloomRecovery') {
-		effectOutput = recipeOutput.buffHearts + ' hearts of ' + buff.displayName;
-	} else if (recipeOutput.buffHearts !== '') {
-		effectOutput = recipeOutput.buffHearts + ' ' + recipeOutput.buff.displayName;
-	} else if (recipeOutput.buffStamina !== '') {
-		effectOutput = recipeOutput.buffStamina + ' wheels of ' + recipeOutput.buff.displayName;
-	}
-
 	function convertHeartsToIcons(hearts) {
 		const heartIcons = [];
 
