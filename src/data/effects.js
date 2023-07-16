@@ -16,7 +16,7 @@ import slipResist from '../data/assets/ui-icons/Resist Slip Resist.svg';
 import extraHearts from '../data/assets/ui-icons/Heart Extra.svg';
 import gloomHearts from '../data/assets/ui-icons/Gloom Repair.svg';
 import staminaRecovery from '../data/assets/ui-icons/Stamina.svg';
-import extraStamina from '../data/assets/ui-icons/Stamina Plus.svg';
+import extraStamina from '../data/assets/ui-icons/Stamina Extra.svg';
 import stamina02 from '../data/assets/ui-icons/stamina 0.2.png';
 import stamina04 from '../data/assets/ui-icons/stamina 0.4.png';
 import stamina06 from '../data/assets/ui-icons/stamina 0.6.png';
