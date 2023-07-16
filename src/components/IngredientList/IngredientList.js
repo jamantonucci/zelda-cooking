@@ -3,6 +3,7 @@ import { effects } from '../../data/effects';
 import './IngredientList.sass';
 import { Tooltip } from 'react-tooltip';
 import heartIcon from '../../data/assets/ui-icons/Heart.svg';
+import starIcon from '../../data/assets/ui-icons/Markless Bonus.svg';
 
 export default function IngredientList(props) {
 	const handleAddIngredient = (ingredient) => {
@@ -27,13 +28,21 @@ export default function IngredientList(props) {
 	const makeTooltip = (ingredient) => {
 		let rows = [];
 		let effect = effects.find((effect) => effect.effect === ingredient.effect);
+
+		// Title Row
 		rows.push(<span className='tooltip-title'>{ingredient.type}</span>);
-		rows.push(
-			<span>
-				<img src={heartIcon} className='ui-icon' /> {ingredient.hearts * 2}
-				<span className='tooltip-note-text'>(when cooked)</span>
-			</span>
-		);
+
+		// Hearts Restored
+		if (ingredient.hearts > 0) {
+			rows.push(
+				<span>
+					<img src={heartIcon} className='ui-icon' /> {ingredient.hearts * 2}
+					<span className='tooltip-note-text'>(when cooked)</span>
+				</span>
+			);
+		}
+
+		// Ingredient Potency (duration buffs only)
 		if (effect.effectType === 'duration') {
 			let strength = '';
 			if (ingredient.potency === 1) {
@@ -45,6 +54,8 @@ export default function IngredientList(props) {
 			}
 			rows.push(<span>Strength: {strength}</span>);
 		}
+
+		// Display Time Boost information
 		if (ingredient.timeBoostDuration > 0) {
 			rows.push(
 				<span>
@@ -52,6 +63,34 @@ export default function IngredientList(props) {
 					<span className='tooltip-note-text'>(first {ingredient.type} only)</span>
 				</span>
 			);
+		}
+
+		// Display Crit information
+		if (ingredient.tags.includes('Crit')) {
+			if (ingredient.type === 'Monster Extract') {
+				rows.push(
+					<span>
+						<img src={starIcon} className='ui-icon' alt='' />
+						Changes duration to 1:00, 10:00 or 30:00
+					</span>
+				);
+			} else if (ingredient.id >= 181 && ingredient.id <= 184) 
+				// Ingredients 181-184 are dragon horns, which always change the duration to 30 minutes.
+			{
+				rows.push(
+					<span>
+						<img src={starIcon} className='ui-icon' alt='' />
+						Sets duration to 30:00
+					</span>
+				);
+			} else {
+				rows.push(
+					<span>
+						<img src={starIcon} className='ui-icon' alt='' />
+						Triggers a random critical effect
+					</span>
+				);
+			}
 		}
 
 		return rows;

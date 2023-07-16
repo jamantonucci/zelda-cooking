@@ -27,7 +27,7 @@ const cook = (recipe) => {
 		buffDuration: null,
 		buffHearts: '',
 		buffStamina: '',
-	}
+	};
 
 	switch (resultEffect.effectType) {
 		case 'duration':
@@ -44,7 +44,7 @@ const cook = (recipe) => {
 			}
 			recipeOutput.buffHearts = buffHearts;
 			return recipeOutput;
-			
+
 		case 'stamina':
 			let buffStamina = getBuffStamina(recipe, resultEffect);
 			recipeOutput.buffStamina = buffStamina;
@@ -114,6 +114,8 @@ const getBuffStrength = (recipe, buff) => {
 const getBuffDuration = (recipe, buff) => {
 	let boostIngredients = new Set();
 	let resultDuration = 0;
+	let dragonHornIds = [181, 182, 183, 184];
+	// Dragon horns always set duration to 30 minutes.
 
 	recipe.forEach((ingredient) => {
 		resultDuration = resultDuration + ingredient.effectDuration;
@@ -129,6 +131,12 @@ const getBuffDuration = (recipe, buff) => {
 
 	boostIngredients.forEach((ingredient) => {
 		resultDuration = resultDuration + ingredient.timeBoostDuration;
+	});
+
+	recipe.forEach((ingredient) => {
+		if (dragonHornIds.includes(ingredient.id)) {
+			resultDuration = 1800;
+		}
 	});
 
 	return resultDuration;
@@ -197,7 +205,7 @@ const getBuffStamina = (recipe, buff) => {
 			case 0:
 				buffStamina = 0;
 				break;
-			case (resultPotency <= 3):
+			case resultPotency <= 3:
 				buffStamina = 0.2;
 				break;
 			default:

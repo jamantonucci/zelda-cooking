@@ -265,14 +265,14 @@ function Ingredient(id, type, hearts, effect, potency, effectDuration, timeBoost
 	this.potency = potency;
 	this.effectDuration = effectDuration;
 	this.timeBoostDuration = timeBoostDuration;
-	this.tags = [];
+	this.tags = tags;
 	this.materialCategory = materialCategory || '';
 	this.image = images[id];
 }
 
 const ingredients = [];
 
-ingredients.push(new Ingredient(1, 'Golden Apple', 1.5, null, 0, 30, 20, ['CookFruit'], 'Fruit'));
+ingredients.push(new Ingredient(1, 'Golden Apple', 1.5, null, 0, 30, 20, ['CookFruit', 'Crit'], 'Fruit'));
 ingredients.push(new Ingredient(2, 'Palm Fruit', 1, null, 0, 30, 0, ['CookFruit'], 'Fruit'));
 ingredients.push(new Ingredient(3, 'Hylian Tomato', 1, null, 0, 30, 0, ['CookFruit'], 'Fruit'));
 ingredients.push(new Ingredient(4, 'Apple', 0.5, null, 0, 30, 0, ['CookFruit'], 'Fruit'));
@@ -340,11 +340,11 @@ ingredients.push(new Ingredient(64, 'Chickaloo Tree Nut', 0.25, null, 0, 0, 10, 
 ingredients.push(new Ingredient(65, 'Cane Sugar', 0, null, 0, 30, 50, ['CookSpice'], 'Boost'));
 ingredients.push(new Ingredient(66, 'Goron Spice', 0, null, 1, 30, 60, ['CookSpice'], 'Boost'));
 ingredients.push(new Ingredient(67, 'Goat Butter', 0, null, 0, 30, 50, ['CookSpice'], 'Boost'));
-ingredients.push(new Ingredient(68, 'Monster Extract', 0, null, 0, 0, 0, ['CookSpice'], 'Boost'));
+ingredients.push(new Ingredient(68, 'Monster Extract', 0, null, 0, 0, 0, ['CookSpice', 'Crit'], 'Boost'));
 ingredients.push(new Ingredient(69, 'Oil Jar', 0, null, 0, 30, 50, ['CookSpice'], 'Boost'));
 ingredients.push(new Ingredient(70, 'Dark Clump', 0, 'GloomResist', 1, 30, 0, ['CookSpice'], 'Boost'));
 ingredients.push(new Ingredient(71, 'Rock Salt', 0, null, 0, 30, 30, ['CookSpice'], 'Boost'));
-ingredients.push(new Ingredient(72, 'Star Fragment', 0, null, 0, 0, 60, ['CookLowPrice'], 'Boost'));
+ingredients.push(new Ingredient(72, 'Star Fragment', 0, null, 0, 0, 60, ['CookLowPrice', 'Crit'], 'Boost'));
 ingredients.push(new Ingredient(73, 'Hearty Salmon', 4, 'ExtraHearts', 16, 0, 0, ['CookFish'], 'Fish'));
 ingredients.push(new Ingredient(74, 'Hearty Bass', 2, 'ExtraHearts', 8, 0, 0, ['CookFish'], 'Fish'));
 ingredients.push(new Ingredient(75, 'Hyrule Bass', 1, null, 0, 0, 0, ['CookFish'], 'Fish'));
@@ -408,7 +408,7 @@ ingredients.push(new Ingredient(120, 'Flint', 0, null, 0, 0, 0, ['CookOre'], 'Or
 ingredients.push(new Ingredient(121, 'Bokoblin Guts', 0, null, 0, 30, 160, ['CookEnemy'], 'EnemyGuts'));
 ingredients.push(new Ingredient(122, 'Moblin Guts', 0, null, 0, 30, 160, ['CookEnemy'], 'EnemyGuts'));
 ingredients.push(new Ingredient(123, 'Horriblin Guts', 0, null, 0, 30, 160, ['CookEnemy'], 'EnemyGuts'));
-ingredients.push(new Ingredient(124, 'Gibdo Guts', 0, null, 0, 30, 80, ['CookEnemy'], 'EnemyGuts'));
+ingredients.push(new Ingredient(124, 'Gibdo Guts', 0, null, 0, 30, 80, ['CookEnemy', 'Crit'], 'EnemyGuts'));
 ingredients.push(new Ingredient(125, 'Boss Bokoblin Guts', 0, null, 0, 30, 160, ['CookEnemy'], 'EnemyGuts'));
 ingredients.push(new Ingredient(126, 'Lynel Guts', 0, null, 0, 30, 160, ['CookEnemy'], 'EnemyGuts'));
 ingredients.push(new Ingredient(127, 'Gleeok Guts', 0, null, 0, 30, 160, ['CookEnemy'], 'EnemyGuts'));
@@ -473,10 +473,10 @@ ingredients.push(new Ingredient(177, 'Hinox Toenail', 0, null, 0, 30, 80, ['Cook
 ingredients.push(new Ingredient(178, 'Gleek Flame Horn', 0, null, 0, 30, 40, ['CookEnemy'], 'EnemyBlade'));
 ingredients.push(new Ingredient(179, 'Gleeok Frost Horn', 0, null, 0, 30, 40, ['CookEnemy'], 'EnemyBlade'));
 ingredients.push(new Ingredient(180, 'Gleeok Thunder Horn', 0, null, 0, 30, 40, ['CookEnemy'], 'EnemyBlade'));
-ingredients.push(new Ingredient(181, 'Dinraal\'s Horn', 0, null, 0, 30,  1800, ['CookLowPrice', 'CookSpice'], 'EnemyBlade'));
-ingredients.push(new Ingredient(182, 'Naydra\'s Horn', 0, null, 0, 30,  1800, ['CookLowPrice', 'CookSpice'], 'EnemyBlade'));
-ingredients.push(new Ingredient(183, 'Farosh\'s Horn', 0, null, 0, 30,  1800, ['CookLowPrice', 'CookSpice'], 'EnemyBlade'));
-ingredients.push(new Ingredient(184, 'Light Dragon\'s Horn', 0, null, 0, 30,  1800, ['CookLowPrice', 'CookSpice'], 'EnemyBlade'));
+ingredients.push(new Ingredient(181, 'Dinraal' + String.fromCharCode(8217) + 's Horn', 0, null, 0, 30,  0, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlade'));
+ingredients.push(new Ingredient(182, 'Naydra' + String.fromCharCode(8217) + 's Horn', 0, null, 0, 30,  0, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlade'));
+ingredients.push(new Ingredient(183, 'Farosh' + String.fromCharCode(8217) + 's Horn', 0, null, 0, 30,  0, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlade'));
+ingredients.push(new Ingredient(184, 'Light Dragon' + String.fromCharCode(8217) + 's Horn', 0, null, 0, 30,  0, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlade'));
 
 // Hammer Horns (#185-213)
 ingredients.push(new Ingredient(185, 'Like Like Stone', 0, null, 0, 30, 80, ['CookEnemy'], 'EnemyHammer'));
@@ -504,10 +504,10 @@ ingredients.push(new Ingredient(206, 'Molduga Jaw',  0, null, 0, 30, 80, ['CookE
 ingredients.push(new Ingredient(207, 'Frox Fang',  0, null, 0, 30, 40, ['CookEnemy'], 'EnemyHammer'));
 ingredients.push(new Ingredient(208, 'Obsidian Frox Fang',  0, null, 0, 30, 40, ['CookEnemy'], 'EnemyHammer'));
 ingredients.push(new Ingredient(209, 'Blue-White Frox Fang',  0, null, 0, 30, 40, ['CookEnemy'], 'EnemyHammer'));
-ingredients.push(new Ingredient(210, 'Shard of Dinraal\'s Spike',  0, null, 0, 30, 80, ['CookLowPrice', 'CookSpice'], 'EnemyHammer'));
-ingredients.push(new Ingredient(211, 'Shard of Naydra\'s Spike',  0, null, 0, 30, 80, ['CookLowPrice', 'CookSpice'], 'EnemyHammer'));
-ingredients.push(new Ingredient(212, 'Shard of Farosh\'s Spike',  0, null, 0, 30, 80, ['CookLowPrice', 'CookSpice'], 'EnemyHammer'));
-ingredients.push(new Ingredient(213, 'Shard of Light Dragon\'s Spike',  0, null, 0, 30, 80, ['CookLowPrice', 'CookSpice'], 'EnemyHammer'));
+ingredients.push(new Ingredient(210, 'Shard of Dinraal' + String.fromCharCode(8217) + 's Spike',  0, null, 0, 30, 80, ['CookLowPrice', 'CookSpice'], 'EnemyHammer'));
+ingredients.push(new Ingredient(211, 'Shard of Naydra' + String.fromCharCode(8217) + 's Spike',  0, null, 0, 30, 80, ['CookLowPrice', 'CookSpice'], 'EnemyHammer'));
+ingredients.push(new Ingredient(212, 'Shard of Farosh' + String.fromCharCode(8217) + 's Spike',  0, null, 0, 30, 80, ['CookLowPrice', 'CookSpice'], 'EnemyHammer'));
+ingredients.push(new Ingredient(213, 'Shard of Light Dragon' + String.fromCharCode(8217) + 's Spike',  0, null, 0, 30, 80, ['CookLowPrice', 'CookSpice'], 'EnemyHammer'));
 
 // Tails (#214-220)
 ingredients.push(new Ingredient(214, 'Lizalfos Tail',  0, null, 0, 30, 160, ['CookEnemy'], 'EnemyWhip'));
@@ -528,22 +528,22 @@ ingredients.push(new Ingredient(226, 'Hinox Tooth',  0, null, 0, 30, 80, ['CookE
 ingredients.push(new Ingredient(227, 'Horriblin Claw',  0, null, 0, 30, 80, ['CookEnemy'], 'EnemyBlunt'));
 ingredients.push(new Ingredient(228, 'Lizalfos Talon',  0, null, 0, 30, 80, ['CookEnemy'], 'EnemyBlunt'));
 ingredients.push(new Ingredient(229, 'Frox Fingernail',  0, null, 0, 30, 80, ['CookEnemy'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(230, 'Dinraal\'s Scale', 0, null, 0, 30, 60, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(231, 'Naydra\'s Scale', 0, null, 0, 30, 60, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(232, 'Farosh\'s Scale', 0, null, 0, 30, 60, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(233, 'Light Dragon\'s Scale', 0, null, 0, 30, 60, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(234, 'Dinraal\'s Claw', 0, null, 0, 30, 180, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(235, 'Naydra\'s Claw', 0, null, 0, 30, 180, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(236, 'Farosh\'s Claw', 0, null, 0, 30, 180, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(237, 'Light Dragon\'s Talon', 0, null, 0, 30, 180, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(238, 'Shard of Dinraal\'s Fang', 0, null, 0, 30, 600, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(239, 'Shard of Naydra\'s Fang', 0, null, 0, 30, 600, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(240, 'Shard of Farosh\'s Fang', 0, null, 0, 30, 600, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
-ingredients.push(new Ingredient(241, 'Shard of Light Dragon\'s Fang', 0, null, 0, 30, 600, ['CookLowPrice', 'CookSpice'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(230, 'Dinraal' + String.fromCharCode(8217) + 's Scale', 0, null, 0, 30, 60, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(231, 'Naydra' + String.fromCharCode(8217) + 's Scale', 0, null, 0, 30, 60, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(232, 'Farosh' + String.fromCharCode(8217) + 's Scale', 0, null, 0, 30, 60, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(233, 'Light Dragon' + String.fromCharCode(8217) + 's Scale', 0, null, 0, 30, 60, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(234, 'Dinraal' + String.fromCharCode(8217) + 's Claw', 0, null, 0, 30, 180, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(235, 'Naydra' + String.fromCharCode(8217) + 's Claw', 0, null, 0, 30, 180, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(236, 'Farosh' + String.fromCharCode(8217) + 's Claw', 0, null, 0, 30, 180, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(237, 'Light Dragon' + String.fromCharCode(8217) + 's Talon', 0, null, 0, 30, 180, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(238, 'Shard of Dinraal' + String.fromCharCode(8217) + 's Fang', 0, null, 0, 30, 600, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(239, 'Shard of Naydra' + String.fromCharCode(8217) + 's Fang', 0, null, 0, 30, 600, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(240, 'Shard of Farosh' + String.fromCharCode(8217) + 's Fang', 0, null, 0, 30, 600, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
+ingredients.push(new Ingredient(241, 'Shard of Light Dragon' + String.fromCharCode(8217) + 's Fang', 0, null, 0, 30, 600, ['CookLowPrice', 'CookSpice', 'Crit'], 'EnemyBlunt'));
 
 // Misc (#242-251)
 ingredients.push(new Ingredient(242, 'Ancient Blade', 0, null, 0, 0, 0, ['CookGolem'], 'AncientBlade'));
-ingredients.push(new Ingredient(243, 'King\'s Scale', 0, null, 0, 30, 0, ['CookOre'], 'FireWoodBundle'));
+ingredients.push(new Ingredient(243, 'King' + String.fromCharCode(8217) + 's Scale', 0, null, 0, 30, 0, ['CookOre'], 'FireWoodBundle'));
 ingredients.push(new Ingredient(244, 'Brightbloom Seed', 0, null, 0, 30, 0, ['CookFruit'], 'FireWoodBundle'));
 ingredients.push(new Ingredient(245, 'Giant Brightbloom Seed', 0, null, 0, 30, 0, ['CookOre'], 'FireWoodBundle'));
 ingredients.push(new Ingredient(246, 'Hylian Pine Cone', 0, null, 0, 30, 0, ['CookOre'], 'FireWoodBundle'));
