@@ -1,4 +1,5 @@
-import { effects } from './data/effects';
+import { effects } from '../data/effects';
+import getMeal from './GetMeal';
 
 /**
  * Takes a recipe and outputs an object with the hearts and
@@ -9,6 +10,7 @@ import { effects } from './data/effects';
 const cook = (recipe) => {
 	let hearts = getHearts(recipe);
 	let resultEffect = getBuff(recipe);
+	let meal = getMeal(recipe);
 
 	let recipeOutput = {
 		hearts: hearts,
@@ -18,6 +20,7 @@ const cook = (recipe) => {
 		buffHearts: '',
 		buffStamina: '',
 		errors: [],
+		meal: meal
 	};
 
 	switch (resultEffect.effectType) {

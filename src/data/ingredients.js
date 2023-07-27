@@ -250,8 +250,6 @@ import img249 from '../data/assets/materials/249.png';
 import img250 from '../data/assets/materials/250.png';
 import img251 from '../data/assets/materials/251.png';
 
-
-
 const images = [];
 
 images.push(null, img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25, img26, img27, img28, img29, img30, img31, img32, img33, img34, img35, img36, img37, img38, img39, img40, img41, img42, img43, img44, img45, img46, img47, img48, img49, img50, img51, img52, img53, img54, img55, img56, img57, img58, img59, img60, img61, img62, img63, img64, img65, img66, img67, img68, img69, img70, img71, img72, img73, img74, img75, img76, img77, img78, img79, img80, img81, img82, img83, img84, img85, img86, img87, img88, img89, img90, img91, img92, img93, img94, img95, img96, img97, img98, img99, img100, img101, img102, img103, img104, img105, img106, img107, img108, img109, img110, img111, img112, img113, img114, img115, img116, img117, img118, img119, img120, img121, img122, img123, img124, img125, img126, img127, img128, img129, img130, img131, img132, img133, img134, img135, img136, img137, img138, img139, img140, img141, img142, img143, img144, img145, img146, img147, img148, img149, img150, img151, img152, img153, img154, img155, img156, img157, img158, img159, img160, img161, img162, img163, img164, img165, img166, img167, img168, img169, img170, img171, img172, img173, img174, img175, img176, img177, img178, img179, img180, img181, img182, img183, img184, img185, img186, img187, img188, img189, img190, img191, img192, img193, img194, img195, img196, img197, img198, img199, img200, img201, img202, img203, img204, img205, img206, img207, img208, img209, img210, img211, img212, img213, img214, img215, img216, img217, img218, img219, img220, img221, img222, img223, img224, img225, img226, img227, img228, img229, img230, img231, img232, img233, img234, img235, img236, img237, img238, img239, img240, img241, img242, img243, img244, img245, img246, img247, img248, img249, img250, img251);
@@ -272,10 +270,10 @@ function Ingredient(id, type, hearts, effect, potency, effectDuration, timeBoost
 
 const ingredients = [];
 
-ingredients.push(new Ingredient(1, 'Golden Apple', 1.5, null, 0, 30, 20, ['CookFruit', 'Crit'], 'Fruit'));
+ingredients.push(new Ingredient(1, 'Golden Apple', 1.5, null, 0, 30, 20, ['CookFruit', 'Crit', 'Apple/Golden Apple'], 'Fruit'));
 ingredients.push(new Ingredient(2, 'Palm Fruit', 1, null, 0, 30, 0, ['CookFruit'], 'Fruit'));
 ingredients.push(new Ingredient(3, 'Hylian Tomato', 1, null, 0, 30, 0, ['CookFruit'], 'Fruit'));
-ingredients.push(new Ingredient(4, 'Apple', 0.5, null, 0, 30, 0, ['CookFruit'], 'Fruit'));
+ingredients.push(new Ingredient(4, 'Apple', 0.5, null, 0, 30, 0, ['CookFruit', 'Apple/Golden Apple'], 'Fruit'));
 ingredients.push(new Ingredient(5, 'Wildberry', 0.5, null, 0, 30, 0, ['CookFruit'], 'Fruit'));
 ingredients.push(new Ingredient(6, 'Voltfruit', 0.5, 'ShockResist', 1, 30, 0, ['CookFruit'], 'Fruit'));
 ingredients.push(new Ingredient(7, 'Fleet-Lotus Seeds', 0.5, 'SpeedUp', 2, 30, 0, ['CookFruit'], 'Fruit'));
@@ -304,15 +302,15 @@ ingredients.push(new Ingredient(29, 'Silent Shroom', 0.5, 'StealthUp', 2, 30, 0,
 ingredients.push(new Ingredient(30, 'Razorshroom', 0.5, 'AttackUp', 2, 30, 0, ['CookMushroom'], 'Mushroom'));
 ingredients.push(new Ingredient(31, 'Ironshroom', 0.5, 'DefenseUp', 2, 30, 0, ['CookMushroom'], 'Mushroom'));
 ingredients.push(new Ingredient(32, 'Skyshroom', 0.25, null, 0, 0, 0, ['CookMushroom'], 'Mushroom'));
-ingredients.push(new Ingredient(33, 'Big Hearty Radish', 4, 'ExtraHearts', 20, 0, 0, ['CookPlant'], 'Plant'));
-ingredients.push(new Ingredient(34, 'Hearty Radish', 2.5, 'ExtraHearts', 12, 0, 0, ['CookPlant'], 'Plant'));
-ingredients.push(new Ingredient(35, 'Endura Carrot', 2, 'ExtraStamina', 4, 10, 0, ['CookPlant'], 'Plant'));
+ingredients.push(new Ingredient(33, 'Big Hearty Radish', 4, 'ExtraHearts', 20, 0, 0, ['CookPlant', 'Radish'], 'Plant'));
+ingredients.push(new Ingredient(34, 'Hearty Radish', 2.5, 'ExtraHearts', 12, 0, 0, ['CookPlant', 'Radish'], 'Plant'));
+ingredients.push(new Ingredient(35, 'Endura Carrot', 2, 'ExtraStamina', 4, 10, 0, ['CookPlant', 'Carrot', 'Pumpkin or Carrot'], 'Plant'));
 ingredients.push(new Ingredient(36, 'Hyrule Herb', 1, null, 0, 0, 0, ['CookPlant'], 'Plant'));
 ingredients.push(new Ingredient(37, 'Silent Princess', 1, 'StealthUp', 3, 30, 0, ['CookPlant'], 'Plant'));
 // Note: Silent Princess doesn't heal any hearts on its own, but when cooked, heals 2 hearts!
-ingredients.push(new Ingredient(38, 'Fortified Pumpkin', 0.5, 'DefenseUp', 2, 30, 0,' CookPlant', 'Plant'));
-ingredients.push(new Ingredient(39, 'Sun Pumpkin', 0.5, 'GloomRecovery', 4, 30, 0, ['CookPlant'], 'Plant'));
-ingredients.push(new Ingredient(40, 'Swift Carrot', 0.5, 'SpeedUp', 1, 30, 0, ['CookPlant'], 'Plant'));
+ingredients.push(new Ingredient(38, 'Fortified Pumpkin', 0.5, 'DefenseUp', 2, 30, 0, ['CookPlant', 'Pumpkin', 'Pumpkin or Carrot'], 'Plant'));
+ingredients.push(new Ingredient(39, 'Sun Pumpkin', 0.5, 'GloomRecovery', 4, 30, 0, ['CookPlant', 'Pumpkin', 'Pumpkin or Carrot'], 'Plant'));
+ingredients.push(new Ingredient(40, 'Swift Carrot', 0.5, 'SpeedUp', 1, 30, 0, ['CookPlant', 'Carrot', 'Pumpkin or Carrot'], 'Plant'));
 ingredients.push(new Ingredient(41, 'Stambulb', 0.5, 'StaminaRecovery', 1, 0, 0, ['CookPlant'], 'Plant'));
 ingredients.push(new Ingredient(42, 'Korok Frond', 0.25, null, 0, 0, 0, ['CookPlant'], 'Plant'));
 ingredients.push(new Ingredient(43, 'Cool Safflina', 0, 'HeatResist', 1, 30, 0, ['CookPlant'], 'Plant'));
@@ -323,20 +321,20 @@ ingredients.push(new Ingredient(47, 'Blue Nightshade', 0, 'StealthUp', 1, 30, 0,
 ingredients.push(new Ingredient(48, 'Electric Safflina', 0, 'ShockResist', 1, 30, 0, ['CookPlant'], 'Plant'));
 ingredients.push(new Ingredient(49, 'Swift Violet', 0, 'SpeedUp', 2, 30, 0, ['CookPlant'], 'Plant'));
 ingredients.push(new Ingredient(50, 'Sundelion', 0, 'GloomRecovery', 12, 0, 0, ['CookPlant'], 'Plant'));
-ingredients.push(new Ingredient(51, 'Raw Gourmet Meat', 3, null, 0, 30, 0, ['CookMeat'], 'Meat'));
-ingredients.push(new Ingredient(52, 'Raw Whole Bird', 3, null, 0, 30, 0, ['CookMeat'], 'Meat'));
-ingredients.push(new Ingredient(53, 'Raw Prime Meat', 1.5, null, 0, 30, 0, ['CookMeat'], 'Meat'));
-ingredients.push(new Ingredient(54, 'Raw Bird Thigh', 1.5, null, 0, 30, 0, ['CookMeat'], 'Meat'));
-ingredients.push(new Ingredient(55, 'Raw Meat', 1, null, 0, 30, 0, ['CookMeat'], 'Meat'));
-ingredients.push(new Ingredient(56, 'Raw Bird Drumstick', 1, null, 0, 30, 0, ['CookMeat'], 'Meat'));
+ingredients.push(new Ingredient(51, 'Raw Gourmet Meat', 3, null, 0, 30, 0, ['CookMeat', 'Tier 3 Meat'], 'Meat'));
+ingredients.push(new Ingredient(52, 'Raw Whole Bird', 3, null, 0, 30, 0, ['CookMeat', 'Tier 3 Meat'], 'Meat'));
+ingredients.push(new Ingredient(53, 'Raw Prime Meat', 1.5, null, 0, 30, 0, ['CookMeat', 'Tier 2 Meat'], 'Meat'));
+ingredients.push(new Ingredient(54, 'Raw Bird Thigh', 1.5, null, 0, 30, 0, ['CookMeat', 'Tier 2 Meat'], 'Meat'));
+ingredients.push(new Ingredient(55, 'Raw Meat', 1, null, 0, 30, 0, ['CookMeat', 'Tier 1 Meat'], 'Meat'));
+ingredients.push(new Ingredient(56, 'Raw Bird Drumstick', 1, null, 0, 30, 0, ['CookMeat', 'Tier 1 Meat'], 'Meat'));
 ingredients.push(new Ingredient(57, 'Courser Bee Honey', 2, 'StaminaRecovery', 2, 0, 0, ['CookSpice'], 'Boost'));
 ingredients.push(new Ingredient(58, 'Hylian Rice', 1, null, 0, 30, 30, ['CookSpice'], 'Boost'));
 ingredients.push(new Ingredient(59, 'Bird Egg', 1, null, 0, 30, 60, ['CookSpice'], 'Boost'));
 ingredients.push(new Ingredient(60, 'Tabantha Wheat', 1, null, 0, 30, 30, ['CookSpice'], 'Boost'));
 ingredients.push(new Ingredient(61, 'Hateno Cheese', 1, null, 0, 30, 50, ['CookSpice'], 'Boost'));
 ingredients.push(new Ingredient(62, 'Fresh Milk', 0.5, null, 0, 30, 50, ['CookSpice'], 'Boost'));
-ingredients.push(new Ingredient(63, 'Acorn', 0.25, null, 0, 0, 20, ['CookSpice'], 'Boost'));
-ingredients.push(new Ingredient(64, 'Chickaloo Tree Nut', 0.25, null, 0, 0, 10, ['CookSpice'], 'Boost'));
+ingredients.push(new Ingredient(63, 'Acorn', 0.25, null, 0, 0, 20, ['CookSpice', 'Nut'], 'Boost'));
+ingredients.push(new Ingredient(64, 'Chickaloo Tree Nut', 0.25, null, 0, 0, 10, ['CookSpice', 'Nut'], 'Boost'));
 ingredients.push(new Ingredient(65, 'Cane Sugar', 0, null, 0, 30, 50, ['CookSpice'], 'Boost'));
 ingredients.push(new Ingredient(66, 'Goron Spice', 0, null, 1, 30, 60, ['CookSpice'], 'Boost'));
 ingredients.push(new Ingredient(67, 'Goat Butter', 0, null, 0, 30, 50, ['CookSpice'], 'Boost'));
@@ -358,12 +356,12 @@ ingredients.push(new Ingredient(82, 'Armored Carp', 1, 'DefenseUp', 2, 30, 0, ['
 ingredients.push(new Ingredient(83, 'Sanke Carp', 1, null, 0, 30, 0, ['CookFish'], 'Fish'));
 ingredients.push(new Ingredient(84, 'Ancient Arowana', 1, null, 0, 0, 0, ['CookFish'], 'Fish'));
 ingredients.push(new Ingredient(85, 'Glowing Cave Fish', 1, 'Glow', 2, 30, 0, ['CookFish'], 'Fish'));
-ingredients.push(new Ingredient(86, 'Mighty Porgy', 1, 'AttackUp', 3, 30, 0, ['CookFish'], 'Fish'));
-ingredients.push(new Ingredient(87, 'Armored Porgy', 1, 'DefenseUp', 3, 30, 0, ['CookFish'], 'Fish'));
-ingredients.push(new Ingredient(88, 'Sneaky River Snail', 1, 'StealthUp', 1, 30, 0, ['CookFish'], 'Fish'));
-ingredients.push(new Ingredient(89, 'Razorclaw Crab', 1, 'AttackUp', 2, 30, 0, ['CookFish'], 'Fish'));
-ingredients.push(new Ingredient(90, 'Ironshell Crab', 1, 'DefenseUp', 2, 30, 0, ['CookFish'], 'Fish'));
-ingredients.push(new Ingredient(91, 'Bright-Eyed Crab', 1, 'StaminaRecovery', 2, 0, 0, ['CookFish'], 'Fish'));
+ingredients.push(new Ingredient(86, 'Mighty Porgy', 1, 'AttackUp', 3, 30, 0, ['CookFish', 'Porgy'], 'Fish'));
+ingredients.push(new Ingredient(87, 'Armored Porgy', 1, 'DefenseUp', 3, 30, 0, ['CookFish', 'Porgy'], 'Fish'));
+ingredients.push(new Ingredient(88, 'Sneaky River Snail', 1, 'StealthUp', 1, 30, 0, ['CookFish', 'Seafood'], 'Fish'));
+ingredients.push(new Ingredient(89, 'Razorclaw Crab', 1, 'AttackUp', 2, 30, 0, ['CookFish', 'Seafood', 'Crab'], 'Fish'));
+ingredients.push(new Ingredient(90, 'Ironshell Crab', 1, 'DefenseUp', 2, 30, 0, ['CookFish', 'Seafood', 'Crab'], 'Fish'));
+ingredients.push(new Ingredient(91, 'Bright-Eyed Crab', 1, 'StaminaRecovery', 2, 0, 0, ['CookFish', 'Seafood', 'Crab'], 'Fish'));
 
 // Elixir Ingredients
 

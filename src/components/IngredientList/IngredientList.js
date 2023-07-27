@@ -6,6 +6,7 @@ import heartIcon from '../../data/assets/ui-icons/Heart.svg';
 import starIcon from '../../data/assets/ui-icons/Markless Bonus.svg';
 
 export default function IngredientList(props) {
+
 	const handleAddIngredient = (ingredient) => {
 		if (props.recipe.length < 5) {
 			const newRecipe = props.recipe;
@@ -30,12 +31,12 @@ export default function IngredientList(props) {
 		let effect = effects.find((effect) => effect.effect === ingredient.effect);
 
 		// Title Row
-		rows.push(<span className='tooltip-title'>{ingredient.type}</span>);
+		rows.push(<span className='tooltip-title' key={rows.length + 1}>{ingredient.type}</span>);
 
 		// Hearts Restored
 		if (ingredient.hearts > 0) {
 			rows.push(
-				<span>
+				<span key={rows.length + 1}>
 					<img src={heartIcon} className='ui-icon' alt='heart icon' /> {ingredient.hearts * 2}
 					<span className='tooltip-note-text'>(when cooked)</span>
 				</span>
@@ -52,13 +53,13 @@ export default function IngredientList(props) {
 			} else if (ingredient.potency === 3) {
 				strength = 'High';
 			}
-			rows.push(<span>Strength: {strength}</span>);
+			rows.push(<span key={rows.length + 1}>Strength: {strength}</span>);
 		}
 
 		// Display Time Boost information
 		if (ingredient.timeBoostDuration > 0) {
 			rows.push(
-				<span>
+				<span key={rows.length + 1}>
 					Adds {ingredient.timeBoostDuration} seconds{' '}
 					<span className='tooltip-note-text'>(first {ingredient.type} only)</span>
 				</span>
@@ -69,7 +70,7 @@ export default function IngredientList(props) {
 		if (ingredient.tags.includes('Crit')) {
 			if (ingredient.type === 'Monster Extract') {
 				rows.push(
-					<span>
+					<span key={rows.length + 1}>
 						<img src={starIcon} className='ui-icon' alt='' />
 						Changes duration to 1:00, 10:00 or 30:00
 					</span>
@@ -77,14 +78,14 @@ export default function IngredientList(props) {
 			} else if (ingredient.id >= 181 && ingredient.id <= 184) {
 				// Ingredients 181-184 are dragon horns, which always change the duration to 30 minutes.
 				rows.push(
-					<span>
+					<span key={rows.length + 1}>
 						<img src={starIcon} className='ui-icon' alt='' />
 						Sets duration to 30:00
 					</span>
 				);
 			} else {
 				rows.push(
-					<span>
+					<span key={rows.length + 1}>
 						<img src={starIcon} className='ui-icon' alt='' />
 						Triggers a random critical effect
 					</span>
@@ -107,7 +108,7 @@ export default function IngredientList(props) {
 						{/* // eslint-disable-next-line */}
 						<span data-tooltip-id={ingredient.type}>
 							<button className='material-button' onClick={() => handleAddIngredient(ingredient)}>
-								<img className='material-img' src={ingredient.image} alt={ingredient.type} />
+								<img className='material-img' src={ingredient.image} alt={ingredient.type} loading="lazy" />
 								{ingredient.effect !== undefined && ingredient.effect !== null && getEffectIcon(ingredient)}
 							</button>
 						</span>
