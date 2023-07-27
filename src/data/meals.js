@@ -147,13 +147,167 @@ import img146 from '../data/assets/meals/146.png';
 
 const images = [];
 
-images.push(null, img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25, img26, img27, img28, img29, img30, img31, img32, img33, img34, img35, img36, img37, img38, img39, img40, img41, img42, img43, img44, img45, img46, img47, img48, img49, img50, img51, img52, img53, img54, img55, img56, img57, img58, img59, img60, img61, img62, img63, img64, img65, img66, img67, img68, img69, img70, img71, img72, img73, img74, img75, img76, img77, img78, img79, img80, img81, img82, img83, img84, img85, img86, img87, img88, img89, img90, img91, img92, img93, img94, img95, img96, img97, img98, img99, img100, img101, img102, img103, img104, img105, img106, img107, img108, img109, img110, img111, img112, img113, img114, img115, img116, img117, img118, img119, img120, img121, img122, img123, img124, img125, img126, img127, img128, img129, img130, img131, img132, img133, img134, img135, img136, img137, img138, img139, img140, img141, img142, img143, img144, img145, img146);
+images.push(
+	null,
+	img1,
+	img2,
+	img3,
+	img4,
+	img5,
+	img6,
+	img7,
+	img8,
+	img9,
+	img10,
+	img11,
+	img12,
+	img13,
+	img14,
+	img15,
+	img16,
+	img17,
+	img18,
+	img19,
+	img20,
+	img21,
+	img22,
+	img23,
+	img24,
+	img25,
+	img26,
+	img27,
+	img28,
+	img29,
+	img30,
+	img31,
+	img32,
+	img33,
+	img34,
+	img35,
+	img36,
+	img37,
+	img38,
+	img39,
+	img40,
+	img41,
+	img42,
+	img43,
+	img44,
+	img45,
+	img46,
+	img47,
+	img48,
+	img49,
+	img50,
+	img51,
+	img52,
+	img53,
+	img54,
+	img55,
+	img56,
+	img57,
+	img58,
+	img59,
+	img60,
+	img61,
+	img62,
+	img63,
+	img64,
+	img65,
+	img66,
+	img67,
+	img68,
+	img69,
+	img70,
+	img71,
+	img72,
+	img73,
+	img74,
+	img75,
+	img76,
+	img77,
+	img78,
+	img79,
+	img80,
+	img81,
+	img82,
+	img83,
+	img84,
+	img85,
+	img86,
+	img87,
+	img88,
+	img89,
+	img90,
+	img91,
+	img92,
+	img93,
+	img94,
+	img95,
+	img96,
+	img97,
+	img98,
+	img99,
+	img100,
+	img101,
+	img102,
+	img103,
+	img104,
+	img105,
+	img106,
+	img107,
+	img108,
+	img109,
+	img110,
+	img111,
+	img112,
+	img113,
+	img114,
+	img115,
+	img116,
+	img117,
+	img118,
+	img119,
+	img120,
+	img121,
+	img122,
+	img123,
+	img124,
+	img125,
+	img126,
+	img127,
+	img128,
+	img129,
+	img130,
+	img131,
+	img132,
+	img133,
+	img134,
+	img135,
+	img136,
+	img137,
+	img138,
+	img139,
+	img140,
+	img141,
+	img142,
+	img143,
+	img144,
+	img145,
+	img146
+);
+
+const priorityIngredients = ['Tier 2 Meat', 'Tier 3 Meat', 'Crab', 'Porgy'];
 
 function Meal(id, type, ingredients) {
-  this.id = id;
-  this.type = type;
-  this.ingredients = ingredients;
-  this.image = images[id];
+	this.id = id;
+	this.type = type;
+	this.ingredients = ingredients;
+	this.image = images[id];
+
+	let compare = (priorityIngredients, ingredients) => priorityIngredients.reduce((a, c) => a + ingredients.includes(c), 0);
+
+  this.priority = compare(priorityIngredients, ingredients);
 }
 
 const meals = [];
@@ -184,7 +338,7 @@ meals.push(new Meal(22, 'Prime Spiced Meat Skewer', ['Raw Prime Meat', 'Goron Sp
 meals.push(new Meal(23, 'Gourmet Spiced Meat Skewer', ['Raw Gourmet Meat', 'Goron Spice']));
 meals.push(new Meal(24, 'Crab Stir-Fry', ['Crab', 'Goron Spice']));
 meals.push(new Meal(25, 'Meat and Seafood Fry', ['Meat', 'Fish']));
-meals.push(new Meal(26, 'Prime Meat and Seafood Fry', ['Tier 2 Meat', 'Fish']));
+meals.push(new Meal(26, 'Prime Meat and Seafood Fry', ['Tier 2 Meat', 'Fish'], 1));
 meals.push(new Meal(27, 'Gourmet Meat and Seafood Fry', ['Tier 3 Meat', 'Fish']));
 meals.push(new Meal(28, 'Salt-Grilled Greens', ['Plant', 'Rock Salt']));
 meals.push(new Meal(29, 'Salt-Grilled Mushrooms', ['Mushroom', 'Rock Salt']));
@@ -274,7 +428,7 @@ meals.push(new Meal(111, 'Cheesy Baked Fish', ['Fish', 'Hateno Cheese']));
 meals.push(new Meal(112, 'Omelet', ['Bird Egg']));
 meals.push(new Meal(113, 'Vegetable Omelet', ['Plant', 'Bird Egg', 'Goat Butter', 'Rock Salt']));
 meals.push(new Meal(114, 'Mushroom Omelet', ['Mushroom', 'Bird Egg', 'Rock Salt', 'Goat Butter']));
-meals.push(new Meal(115, 'Cheesy Omelet', ['Mushroom/Plant', 'Hateno Cheese', 'Bird Egg', 'Rock Salt']))
+meals.push(new Meal(115, 'Cheesy Omelet', ['Mushroom/Plant', 'Hateno Cheese', 'Bird Egg', 'Rock Salt']));
 // need mushroom/plant
 meals.push(new Meal(116, 'Hot Buttered Apple', ['Apple/Golden Apple', 'Goat Butter']));
 // apples
@@ -286,8 +440,10 @@ meals.push(new Meal(120, 'Fried Bananas', ['Mighty Bananas', 'Tabantha Wheat', '
 meals.push(new Meal(121, 'Egg Pudding', ['Bird Egg', 'Fresh Milk', 'Cane Sugar']));
 meals.push(new Meal(122, 'Plain Crepe', ['Tabantha Wheat', 'Fresh Milk', 'Bird Egg', 'Cane Sugar']));
 meals.push(new Meal(123, 'Wildberry Crepe', ['Tabantha Wheat', 'Fresh Milk', 'Bird Egg', 'Cane Sugar', 'Wildberry']));
-meals.push(new Meal(124, 'Honey Crepe', ['Tabantha Wheat', 'Fresh Milk', 'Bird Egg', 'Cane Sugar', 'Courser Bee Honey']));
-meals.push(new Meal(125, 'Nutcake', ['Tabantha Wheat', 'Goat Butter', 'Cane Sugar', 'Nut']))
+meals.push(
+	new Meal(124, 'Honey Crepe', ['Tabantha Wheat', 'Fresh Milk', 'Bird Egg', 'Cane Sugar', 'Courser Bee Honey'])
+);
+meals.push(new Meal(125, 'Nutcake', ['Tabantha Wheat', 'Goat Butter', 'Cane Sugar', 'Nut']));
 meals.push(new Meal(126, 'Fruitcake', ['Dessert Fruit', 'Apple or Wildberry', 'Tabantha Wheat', 'Cane Sugar']));
 // good luck
 meals.push(new Meal(127, 'Carrot Cake', ['Carrot', 'Tabantha Wheat', 'Cane Sugar', 'Goat Butter']));
@@ -312,5 +468,4 @@ meals.push(new Meal(145, 'Dubious Food', ['Invalid Recipe']));
 // change
 meals.push(new Meal(146, 'Rock-Hard Food', ['Ore']));
 
-
-export {meals};
+export { meals };

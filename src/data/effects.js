@@ -46,6 +46,7 @@ const effects = [
     highThreshold: 7,
     duration: 20,
     icon: attackUp,
+    prefix: 'Mighty'
   },
   {
     effect: 'ColdResist',
@@ -54,7 +55,8 @@ const effects = [
     midThreshold: 6,
     highThreshold: 99,
     duration: 120,
-    icon: coldResist
+    icon: coldResist,
+    prefix: 'Spicy'
   },
   {
     effect: 'DefenseUp',
@@ -63,7 +65,8 @@ const effects = [
     midThreshold: 5,
     highThreshold: 7,
     duration: 20,
-    icon: defenseUp
+    icon: defenseUp,
+    prefix: 'Tough'
   },
   {
     effect: 'Fireproof',
@@ -72,7 +75,8 @@ const effects = [
     midThreshold: 7,
     highThreshold: 99,
     duration: 120,
-    icon: fireResist
+    icon: fireResist,
+    prefix: 'Fireproof'
   },
   {
     effect: 'HeatResist',
@@ -81,7 +85,8 @@ const effects = [
     midThreshold: 6,
     highThreshold: 99,
     duration: 120,
-    icon: heatResist
+    icon: heatResist,
+    prefix: 'Chilly'
   },
   {
     effect: 'ShockResist',
@@ -90,7 +95,8 @@ const effects = [
     midThreshold: 4,
     highThreshold: 6,
     duration: 120,
-    icon: shockResist
+    icon: shockResist,
+    prefix: 'Electro'
   },
   {
     effect: 'SpeedUp',
@@ -99,7 +105,8 @@ const effects = [
     midThreshold: 5,
     highThreshold: 7,
     duration: 30,
-    icon: speedUp
+    icon: speedUp,
+    prefix: 'Hasty'
   },
   {
     effect: 'StealthUp',
@@ -108,33 +115,38 @@ const effects = [
     midThreshold: 6,
     highThreshold: 9,
     duration: 90,
-    icon: stealthUp
+    icon: stealthUp,
+    prefix: 'Sneaky'
   },
   {
     effect: 'ExtraHearts',
     displayName: 'Extra Hearts',
     effectType: 'hearts',
-    icon: extraHearts
+    icon: extraHearts,
+    prefix: 'Hearty'
   },
   {
     effect: 'GloomRecovery',
     displayName: 'Gloom Recovery',
     effectType: 'hearts',
-    icon: gloomHearts
+    icon: gloomHearts,
+    prefix: 'Sunny'
   },
   {
     effect: 'StaminaRecovery',
     displayName: 'Stamina Recovery',
     effectType: 'stamina',
     icon: staminaRecovery,
-    icons: [stamina02, stamina04, stamina06, stamina08]
+    icons: [stamina02, stamina04, stamina06, stamina08],
+    prefix: 'Energizing'
   },
   {
     effect: 'ExtraStamina',
     displayName: 'Extra Stamina',
     effectType: 'stamina',
     icon: extraStamina,
-    icons: [estamina02, estamina04, estamina06, estamina08]
+    icons: [estamina02, estamina04, estamina06, estamina08],
+    prefix: 'Enduring'
   },
   {
     effect: 'HotWeatherAttack',
@@ -143,7 +155,8 @@ const effects = [
     midThreshold: 99,
     highThreshold: 99,
     duration: 30,
-    icon: hotWeatherAttack
+    icon: hotWeatherAttack,
+    prefix: 'Scorching'
   },
   {
     effect: 'ColdWeatherAttack',
@@ -152,7 +165,8 @@ const effects = [
     midThreshold: 99,
     highThreshold: 99,
     duration: 30,
-    icon: coldWeatherAttack
+    icon: coldWeatherAttack,
+    prefix: 'Biting'
   },
   {
     effect: 'StormyWeatherAttack',
@@ -161,7 +175,8 @@ const effects = [
     midThreshold: 99,
     highThreshold: 99,
     duration: 30,
-    icon: stormyWeatherAttack
+    icon: stormyWeatherAttack,
+    prefix: 'Stormy'
   },
   {
     effect: 'SwimSpeedUp',
@@ -170,7 +185,8 @@ const effects = [
     midThreshold: 99,
     highThreshold: 99,
     duration: 90,
-    icon: swimSpeedUp
+    icon: swimSpeedUp,
+    prefix: 'Rapid'
   },
   {
     effect: 'Glow',
@@ -179,7 +195,8 @@ const effects = [
     midThreshold: 5,
     highThreshold: 7,
     duration: 90,
-    icon: glow
+    icon: glow,
+    prefix: 'Bright'
   },
   {
     effect: 'GloomResist',
@@ -188,7 +205,8 @@ const effects = [
     midThreshold: 2,
     highThreshold: 3,
     duration: 120,
-    icon: gloomResist
+    icon: gloomResist,
+    prefix: 'Warding'
   },
   {
     effect: 'SlipResist',
@@ -198,6 +216,7 @@ const effects = [
     highThreshold: 7,
     duration: 90,
     icon: slipResist,
+    prefix: 'Sticky'
   }
 
 

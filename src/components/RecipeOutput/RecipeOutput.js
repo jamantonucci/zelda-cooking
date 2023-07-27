@@ -13,8 +13,8 @@ export default function RecipeOutput({ recipe }) {
 
 	if (buff.effect === 'ExtraHearts') {
 		hearts.push(
-			<span>
-				<img src={heartIcon} className='ui-icon' alt='heart icon' />
+			<span key='full-recovery'>
+				<img src={heartIcon} className='ui-icon' alt='heart icon'  />
 				Full Recovery
 			</span>
 		);
@@ -41,7 +41,7 @@ export default function RecipeOutput({ recipe }) {
 
 		if (hearts % 1 !== 0) {
 			heartIcons.push(
-				<img src={halfHeartIcon} className='ui-icon' alt='half heart icon' key={heartIcons.length + 1} />
+				<img src={halfHeartIcon} className='ui-icon' alt='half heart icon' key={heartIcons.length + 0.5} />
 			);
 		}
 
@@ -96,7 +96,7 @@ export default function RecipeOutput({ recipe }) {
 			<div className='effects-div'>
 				{recipe.length > 0 && (
 					<div className='meal-div'>
-						{recipeOutput.meal.type}
+						{buff.prefix} {recipeOutput.meal.type}
 						<img alt={recipeOutput.meal.type} className='meal-img' src={recipeOutput.meal.image} />
 					</div>
 				)}
