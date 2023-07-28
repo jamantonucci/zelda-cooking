@@ -1,5 +1,7 @@
 import { effects } from '../data/effects';
 import getMeal from './GetMeal';
+import { meals } from '../data/meals';
+import { elixirs } from '../data/elixirs';
 
 /**
  * Takes a recipe and outputs an object with the hearts and
@@ -8,9 +10,42 @@ import getMeal from './GetMeal';
  * @returns {object} 	Contains information about the recipe
  */
 const cook = (recipe) => {
+
+	// 1. Check if rock hard food
+	if (isRockHard(recipe).rockHard === true) {
+		let recipeOutput = {
+			hearts: 0.25,
+			buff: effects[0],
+			buffStrength: null,
+			buffDuration: null,
+			buffHearts: '',
+			buffStamina: '',
+			errors: isRockHard(recipe).errors,
+			meal: meals[146],
+		};
+
+		return recipeOutput;
+	}
+
+	// 2. Check if dubious food
+	if (isDubious(recipe).dubious === true) {
+		let recipeOutput = {
+			hearts: 2,
+			buff: effects[0],
+			buffStrength: null,
+			buffDuration: null,
+			buffHearts: '',
+			buffStamina: '',
+			errors: isDubious(recipe).errors,
+			meal: meals[145],
+		}
+
+		return recipeOutput;
+	}
+
+	// 3. If not rock hard or dubious, find hearts restored and buff
 	let hearts = getHearts(recipe);
 	let resultEffect = getBuff(recipe);
-	let meal = getMeal(recipe);
 
 	let recipeOutput = {
 		hearts: hearts,
@@ -20,8 +55,24 @@ const cook = (recipe) => {
 		buffHearts: '',
 		buffStamina: '',
 		errors: [],
-		meal: meal
 	};
+
+	// 4: Check if result is an elixir
+	let hasFood = recipe.some((ingredient) => ingredient.id < 92);
+	let hasMonsterParts = recipe.some((ingredient) => ingredient.tags.includes('CookEnemy'));
+	let hasCritters = recipe.some((ingredient) => ingredient.tags.includes('CookInsect'));
+
+	if (!hasFood && hasMonsterParts && hasCritters) {
+		recipeOutput.meal = elixirs.find(elixir => elixir.effect === resultEffect);
+	} else {
+		recipeOutput.meal = getMeal(recipe);
+	}
+
+	if (recipeOutput.meal.id === 145 && recipe.length > 0) {
+		recipeOutput.hearts = 1;
+		recipeOutput.buff = effects[0];
+		recipeOutput.errors.push('Invalid recipe. Try adding more ingredients!')
+	}
 
 	switch (resultEffect.effectType) {
 		case 'duration':
@@ -51,6 +102,64 @@ const cook = (recipe) => {
 		default:
 			return recipeOutput;
 	}
+};
+
+const isDubious = (recipe) => {
+	let dubious = false;
+	let errors = [];
+
+	let hasFood = recipe.some((ingredient) => ingredient.id < 92);
+	let hasMonsterParts = recipe.some((ingredient) => ingredient.tags.includes('CookEnemy'));
+	let hasCritters = recipe.some((ingredient) => ingredient.tags.includes('CookInsect'));
+
+	// Food with monster parts or critters, but not both
+	if (hasFood) {
+		if ((hasMonsterParts && !hasCritters) || (!hasMonsterParts && hasCritters)) {
+			dubious = true;
+			errors.push('Monster parts and critters must be used together.');
+		}
+	}
+
+	// Monster parts or critters on their own
+	if ((hasMonsterParts && !hasFood && !hasCritters) || (hasCritters && !hasFood && !hasMonsterParts)) {
+		dubious = true;
+		errors.push('Monster parts must be cooked with critters.');
+	}
+
+	// Any recipe that would produce an elixir without an effect
+	if (hasMonsterParts && hasCritters) {
+		let buff = getBuff(recipe);
+		if (buff.effect === 'error') {
+			dubious = true;
+			errors.push('Ingredients with different effects are cancelling each other out.')
+		}
+	}
+
+	return { dubious, errors };
+};
+
+/**
+ * Determines if a recipe will output Rock-Hard Food.
+ * Food is Rock-Hard if it contains ore, wood, or ONLY rock salt.
+ * @param {array} recipe An array of ingredients
+ * @returns {Boolean, Array} Whether the food is Rock Hard, and if so, a message about it
+ */
+const isRockHard = (recipe) => {
+	let rockHard = false;
+	let errors = [];
+
+	if (recipe.some((ingredient) => ingredient.materialCategory === 'Ore')) {
+		rockHard = true;
+		errors.push('Meals containing wood or ore always make Rock-Hard Food.');
+	} else if (recipe.some((ingredient) => ingredient.materialCategory === 'FireWoodBundle')) {
+		rockHard = true;
+		errors.push('Meals containing wood or ore always make Rock-Hard Food.');
+	} else if (recipe.length > 0 && recipe.filter((ingredient) => ingredient.type !== 'Rock Salt').length === 0) {
+		rockHard = true;
+		errors.push('Cooking with only Rock Salt makes Rock-Hard Food.');
+	}
+
+	return { rockHard, errors };
 };
 
 /**

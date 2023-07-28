@@ -4,14 +4,6 @@ export default function getMeal(recipe) {
 	let possibleMatches = [];
 	let perfectMatch = undefined;
 
-	// 1. Check for rock hard food
-	// TODO: All rock salt should also give rock hard food?
-	for (let i = 0; i < recipe.length; i++) {
-		if (recipe[i].tags.includes('CookOre')) {
-			return meals[146]; // 146 = Rock Hard Food
-		}
-	}
-
 	// Outer loop - per meal
 	for (let i = 0; i < meals.length; i++) {
 		let InputIng = [...recipe];
@@ -56,9 +48,7 @@ export default function getMeal(recipe) {
 	if (perfectMatch) {
 		return perfectMatch;
 	} else if (possibleMatches.length > 0) {
-		console.log(possibleMatches);
 		let betterMatches = findBestFit(possibleMatches);
-		console.log(betterMatches);
 		return betterMatches[betterMatches.length - 1];
 	} else {
 		return meals[145];

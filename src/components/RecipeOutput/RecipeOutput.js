@@ -96,7 +96,7 @@ export default function RecipeOutput({ recipe }) {
 			<div className='effects-div'>
 				{recipe.length > 0 && (
 					<div className='meal-div'>
-						{buff.prefix} {recipeOutput.meal.type}
+						{(recipeOutput.meal.ingredients) && buff.prefix} {recipeOutput.meal.type}
 						<img alt={recipeOutput.meal.type} className='meal-img' src={recipeOutput.meal.image} />
 					</div>
 				)}
