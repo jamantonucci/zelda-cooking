@@ -3,7 +3,7 @@ import './header.sass'
 export default function Header() {
 	return (
 		<header>
-			<h1>Meals of the Kingdom</h1>
+			<h1>ZELDA.RECIPES</h1>
 			<hr />
 		</header>
 	);
