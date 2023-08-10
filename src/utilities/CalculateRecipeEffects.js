@@ -14,7 +14,7 @@ const cook = (recipe) => {
 	// 1. Check if rock hard food
 	if (isRockHard(recipe).rockHard === true) {
 		let recipeOutput = {
-			hearts: 0.25,
+			hearts: 0.125,
 			buff: effects[0],
 			buffStrength: null,
 			buffDuration: null,

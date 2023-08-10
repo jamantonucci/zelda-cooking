@@ -2,6 +2,7 @@ import './RecipeOutput.sass';
 import { cook } from '../../utilities/CalculateRecipeEffects';
 import heartIcon from '../../data/assets/ui-icons/Heart.svg';
 import halfHeartIcon from '../../data/assets/ui-icons/Heart Half.svg';
+import quarterHeartIcon from '../../data/assets/ui-icons/Heart Quarter.svg';
 import { FiClock, FiAlertTriangle } from 'react-icons/fi';
 
 export default function RecipeOutput({ recipe }) {
@@ -39,7 +40,11 @@ export default function RecipeOutput({ recipe }) {
 			heartIcons.push(<img src={heartIcon} className='ui-icon' alt='heart icon' key={heartIcons.length + 1} />);
 		}
 
-		if (hearts % 1 !== 0) {
+		if (hearts % 0.5 !== 0) {
+			heartIcons.push(
+				<img src={quarterHeartIcon} className='ui-icon' alt='quarter heart icon' key={heartIcons.length + 0.25} />
+			)
+		} else if (hearts % 1 !== 0) {
 			heartIcons.push(
 				<img src={halfHeartIcon} className='ui-icon' alt='half heart icon' key={heartIcons.length + 0.5} />
 			);
