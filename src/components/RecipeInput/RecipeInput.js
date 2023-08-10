@@ -16,13 +16,10 @@ export default function RecipeInput({ recipe, setRecipe }) {
 	for (let i = 0; i <= 4; i++) {
 		if (i < recipe.length) {
 			rows.push(
-				<div key={i} className='row'>
+				<div key={i} className='row' onClick={() => handleRemoveIngredient(i)}>
 					<span className='ingredient-name'>
 						<img className='material-img' src={recipe[i].image} alt={recipe[i].type} />
 						{recipe[i].type}
-					</span>
-					<span className='remove-ingredient' onClick={() => handleRemoveIngredient(i)}>
-						<CiSquareRemove />
 					</span>
 				</div>
 			);
